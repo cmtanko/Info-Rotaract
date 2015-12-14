@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minHeight="25px"
+    android:minWidth="25px"
+    android:orientation="vertical"
+    android:padding="5dp"
+    android:weightSum="1">
+
+    <ImageView
+        android:id="@+id/imgNewsPic"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_weight="17.20"
+        android:background="@drawable/news_pic_01"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="25px"
+        android:minWidth="25px"
+        android:orientation="horizontal"
+        android:layout_alignBottom="@+id/imgNewsPic"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="#b1000000">
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="25px"
+            android:minWidth="25px"
+            android:orientation="vertical"
+            android:layout_weight="90">
+            <TextView
+                android:id="@+id/lblNewsTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="Blood Donation Program"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#ffffff"
+                android:gravity="center_horizontal" />
+            <TextView
+                android:id="@+id/lblCityEventCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="click for details"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="10sp"
+                android:textColor="#ffffff"
+                android:gravity="center_horizontal" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

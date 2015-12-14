@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#c6c6c6">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="About Us"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:background="@drawable/logo_rckne"
+        android:layout_gravity="center" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView"
+        android:layout_gravity="center_horizontal" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Rotaract Club of Kathmandu North East"
+                android:id="@+id/textView4"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="left"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text=" \t \t Rotaract Club of Kathmandu North East is a rotaract club chartered on 30th June, 2005. It is a club Sponsored by Rotary Club of Kathmandu North East under district 3292.It is the club with enthusiatic and active peoples. RAC-KNE has worked in different fields like education, awareness, fellowship, community service and also the personal development. Different person of different fields are the member of this club. It is great family Rotaract Club  Rotaract is a Rotary-sponsored service club for young men and women ages 18 to 30. Rotaract clubs are either community or university based, and they&apos;re sponsored by a local Rotary club. This makes them true &quot;partners in service&quot; and key members of the family of Rotary.  As one of Rotary&apos;s most significant and fastest-growing service programs, with more than 8,200 clubs in about 170 countries and geographical areas, Rotaract has become a worldwide phenomenon."
+                android:id="@+id/textView2"
+                android:layout_marginTop="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="How does it work?"
+                android:id="@+id/textView5"
+                android:layout_marginTop="5dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text=" \t \t All Rotaract efforts begin at the local, grassroots level, with members addressing their communities™ physical and social needs while promoting international understanding and peace through a framework of friendship and service. What are some other opportunities available to Rotaractors?How does it work? \n \t \t All Rotaract efforts begin at the local, grassroots level, with members addressing their communities™ physical and social needs while promoting international understanding and peace through a framework of friendship and service. What are some other opportunities available to Rotaractors?"
+                android:id="@+id/textView3"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
