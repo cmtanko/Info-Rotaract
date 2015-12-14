@@ -7,5 +7,5 @@ package com.newplanet.inforotaract.Utils;
 public class GetJson
 {
     public final static String rootNode = "https://rckne.firebaseio.com/";
-    public final static String eventsRefNode = "/news";
+    public final static String eventsRefNode = "https://rckneevents.firebaseio.com/";
 }
