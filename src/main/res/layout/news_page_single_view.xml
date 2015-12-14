@@ -11,11 +11,11 @@
     <ImageView
         android:id="@+id/imgNewsPic"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:layout_weight="17.20"
-        android:background="@drawable/news_pic_01"
         android:adjustViewBounds="true"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop"
+        android:src="@drawable/news_pic_01" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"

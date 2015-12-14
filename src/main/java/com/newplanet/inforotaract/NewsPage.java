@@ -74,10 +74,9 @@ public class NewsPage extends Fragment
             public void onDataChange(DataSnapshot dataSnapshot)
             {
                 List<News> news = new ArrayList<News>();
-                for(DataSnapshot trip:dataSnapshot.getChildren())
+                for(DataSnapshot data:dataSnapshot.getChildren())
                 {
-                    News n = trip.getValue(News.class);
-                    n.title = trip.getKey();
+                    News n = data.getValue(News.class);
                     news.add(n);
                 }
 
