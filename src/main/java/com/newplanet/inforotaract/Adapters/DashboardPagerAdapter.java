@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.newplanet.inforotaract.AboutPage;
+import com.newplanet.inforotaract.EventPage;
 import com.newplanet.inforotaract.GalleryPage;
 import com.newplanet.inforotaract.NewsPage;
 
@@ -29,6 +30,8 @@ public class DashboardPagerAdapter extends FragmentPagerAdapter
             return AboutPage.newInstance(); // pass the class of activity where we are supposed to navigate to on click of gridView item
         else if (position == 1)
             return NewsPage.newInstance();
+        else if (position==2)
+            return EventPage.newInstance();
         else if(position ==3)
             return GalleryPage.newInstance();
         else
