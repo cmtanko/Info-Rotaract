@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created on 12/14/2015
  * By : $(USER)<suchan211@gmail.com>
  */
-public class Event implements Serializable
+public class Event implements Serializable, IListModel12
 {
     public String sno;
     public String title;
@@ -20,6 +20,7 @@ public class Event implements Serializable
     public String pic_link_03;
     public String pic_link_04;
     public String prof_pic;
+
 
     public String getInterested() {
         return interested;
@@ -36,8 +37,15 @@ public class Event implements Serializable
         return sno;
     }
 
+
+
     public String getTitle() {
         return title;
+    }
+
+    @Override
+    public String getImageURL() {
+        return getProf_pic();
     }
 
     public String getDate() {
@@ -79,7 +87,5 @@ public class Event implements Serializable
     public String getProf_pic() {
         return prof_pic;
     }
-
-
 
 }

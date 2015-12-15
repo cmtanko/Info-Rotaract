@@ -1,5 +1,4 @@
 package com.newplanet.inforotaract;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +17,9 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
 
-import com.newplanet.inforotaract.Adapters.NewsListAdapter;
+import com.newplanet.inforotaract.Adapters.ListModelAdapter;
+import com.newplanet.inforotaract.Adapters.ListModelAdapter;
+import com.newplanet.inforotaract.Models.IListModel12;
 import com.newplanet.inforotaract.Models.News;
 import com.newplanet.inforotaract.Utils.App;
 import com.newplanet.inforotaract.Utils.GetJson;
@@ -54,14 +55,14 @@ public class NewsPage extends Fragment
 
         //ON LIST ITEM CLICK EVENT
         listNewsView.setOnItemClickListener(
-                new AdapterView.OnItemClickListener(){
+                new AdapterView.OnItemClickListener() {
 
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         News curItem = (News) (parent.getItemAtPosition(position));
-                        Intent i = new Intent(getActivity(),NewsDetailActivity.class);
+                        Intent i = new Intent(getActivity(), NewsDetailActivity.class);
                         Bundle b = new Bundle();
-                        b.putSerializable("curItem",curItem);
+                        b.putSerializable("curItem", curItem);
                         i.putExtras(b);
                         startActivity(i);
                     }
@@ -92,14 +93,14 @@ public class NewsPage extends Fragment
             @Override
             public void onDataChange(DataSnapshot dataSnapshot)
             {
-                List<News> news = new ArrayList<News>();
+                List<IListModel12> news = new ArrayList<IListModel12>();
                 for(DataSnapshot data:dataSnapshot.getChildren())
                 {
                     News n = data.getValue(News.class);
                     news.add(n);
                 }
 
-                ListAdapter listAdp = new NewsListAdapter(getActivity(), news, R.layout.news_page_single_view);
+                ListAdapter listAdp = new ListModelAdapter(getActivity(), news, R.layout.news_page_single_view);
                 listNewsView.setAdapter(listAdp);
                 progress.dismiss();
 

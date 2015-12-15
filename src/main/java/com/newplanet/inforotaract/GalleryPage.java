@@ -18,7 +18,7 @@ import com.firebase.client.ValueEventListener;
 
 
 import com.newplanet.inforotaract.Adapters.GalleryAdapter;
-import com.newplanet.inforotaract.Adapters.NewsListAdapter;
+import com.newplanet.inforotaract.Adapters.ListModelAdapter;
 import com.newplanet.inforotaract.Models.News;
 import com.newplanet.inforotaract.Utils.App;
 import com.newplanet.inforotaract.Utils.GetJson;

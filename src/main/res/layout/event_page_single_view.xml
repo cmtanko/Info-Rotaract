@@ -30,7 +30,7 @@
             <ImageView
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:id="@+id/imgEventView"
+                android:id="@+id/imgPic"
                 android:background="@drawable/img_dialog"
                 android:layout_gravity="center" />
 
@@ -45,7 +45,7 @@
             android:orientation="vertical"
             android:layout_weight="75">
             <TextView
-                android:id="@+id/lblEventTitle"
+                android:id="@+id/lblTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"

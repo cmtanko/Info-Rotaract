@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created on 12/14/2015
  * By : $(USER)<suchan211@gmail.com>
  */
-public class News implements Serializable
+public class News implements Serializable, IListModel12
 {
     public String sno;
     public String title;
@@ -27,6 +27,11 @@ public class News implements Serializable
 
     public String getTitle() {
         return title;
+    }
+
+    @Override
+    public String getImageURL() {
+        return getProf_pic();
     }
 
     public String getDate() {
@@ -68,7 +73,5 @@ public class News implements Serializable
     public String getProf_pic() {
         return prof_pic;
     }
-
-
 
 }

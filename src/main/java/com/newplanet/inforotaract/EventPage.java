@@ -16,8 +16,9 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
 
-import com.newplanet.inforotaract.Adapters.EventsListAdapter;
+import com.newplanet.inforotaract.Adapters.ListModelAdapter;
 import com.newplanet.inforotaract.Models.Event;
+import com.newplanet.inforotaract.Models.IListModel12;
 import com.newplanet.inforotaract.Utils.App;
 import com.newplanet.inforotaract.Utils.GetJson;
 
@@ -73,14 +74,14 @@ public class EventPage extends Fragment
             @Override
             public void onDataChange(DataSnapshot dataSnapshot)
             {
-                List<Event> events = new ArrayList<Event>();
+                List<IListModel12> events = new ArrayList<IListModel12>();
                 for(DataSnapshot data:dataSnapshot.getChildren())
                 {
                     Event e = data.getValue(Event.class);
                     events.add(e);
                 }
 
-                ListAdapter listAdp = new EventsListAdapter<Event>(getActivity(), events, R.layout.event_page_single_view);
+                ListAdapter listAdp = new ListModelAdapter(getActivity(), events, R.layout.event_page_single_view);
                 listNewsView.setAdapter(listAdp);
                 progress.dismiss();
 

@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.newplanet.inforotaract.Models.News;
+import com.newplanet.inforotaract.Models.IListModel12;
 import com.newplanet.inforotaract.R;
 import com.newplanet.inforotaract.Utils.App;
 
@@ -20,12 +20,12 @@ import java.util.List;
  * Created on 12/14/2015
  * By : $(USER)<suchan211@gmail.com>
  */
-public class NewsListAdapter extends ArrayAdapter<News>
+public class ListModelAdapter extends ArrayAdapter<IListModel12>
 {
     private int resourceId = 0;
-    private List<News> items;
+    private List<IListModel12> items;
 
-    public NewsListAdapter(Context context, List<News> news, int id)
+    public ListModelAdapter(Context context, List<IListModel12> news, int id)
     {
         super(context, id, news);
         items = news;
@@ -38,12 +38,13 @@ public class NewsListAdapter extends ArrayAdapter<News>
         LayoutInflater layoutInflater = LayoutInflater.from(getContext());
         View view = layoutInflater.inflate(resourceId, parent, false);
 
-        News news = getItem(position);
-        TextView tvTitle = (TextView) view.findViewById(R.id.lblNewsTitle);
-        ImageView ivPic = (ImageView) view.findViewById(R.id.imgNewsPic);
+        IListModel12 listModel = getItem(position);
 
-        tvTitle.setText(news.getTitle());
-        App.LoadImage(view.getContext(), ivPic, news.getProf_pic());
+        TextView tvTitle = (TextView) view.findViewById(R.id.lblTitle);
+        ImageView ivPic = (ImageView) view.findViewById(R.id.imgPic);
+
+        tvTitle.setText(listModel.getTitle());
+        App.LoadImage(view.getContext(), ivPic, listModel.getImageURL());
 
 
         return view;
