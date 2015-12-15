@@ -31,7 +31,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:id="@+id/imgEventView"
-                android:background="@drawable/icon_btn_notification"
+                android:background="@drawable/img_dialog"
                 android:layout_gravity="center" />
 
         </LinearLayout>
