@@ -64,6 +64,11 @@ public class Event implements Serializable, IListModel12
         return description;
     }
 
+    @Override
+    public String getDetail() {
+        return null;
+    }
+
     public String getComment() {
         return comment;
     }

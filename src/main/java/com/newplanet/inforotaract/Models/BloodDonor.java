@@ -1,10 +1,12 @@
 package com.newplanet.inforotaract.Models;
 
+import java.io.Serializable;
+
 /**
  * Created on 12/15/2015
  * By : $(USER)<suchan211@gmail.com>
  */
-public class BloodDonor
+public class BloodDonor implements Serializable,IListModel12
 {
     private String sno;
     private String firstname;
@@ -18,7 +20,13 @@ public class BloodDonor
     private String home;
     private String is_availabe;
     private String note;
+    private String prof_pic;
 
+
+
+    public String getProf_pic() {
+        return prof_pic;
+    }
 
     public String getSno() {
         return sno;
@@ -69,5 +77,29 @@ public class BloodDonor
     }
 
 
+    @Override
+    public String getTitle() {
+        return getFirstname() + " " + getLastname() + " [" + getBloodgroup() + "] ";
+    }
 
+    @Override
+    public String getImageURL() {
+        return getProf_pic();
+    }
+
+    @Override
+    public String getDescription()
+    {
+        String available="";
+        if(getIs_availabe().equals("1"))
+            available = "Yes";
+        else
+            available = "No";
+        return "Blood Group: " + getBloodgroup() + " | Availability:" + available;
+    }
+
+    @Override
+    public String getDetail() {
+        return getClub();
+    }
 }

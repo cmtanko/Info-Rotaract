@@ -23,7 +23,9 @@ import com.firebase.client.ValueEventListener;
 import com.newplanet.inforotaract.Adapters.BloodDonorListAdapter;
 import com.newplanet.inforotaract.Adapters.ListModelAdapter;
 import com.newplanet.inforotaract.Models.BloodDonor;
+import com.newplanet.inforotaract.Models.IListModel12;
 import com.newplanet.inforotaract.Models.News;
+import com.newplanet.inforotaract.Utils.App;
 import com.newplanet.inforotaract.Utils.GetJson;
 
 import java.util.ArrayList;
@@ -46,9 +48,15 @@ public class BloodDonorListingPage extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.blood_donar_page);
+        listNewsView = (ListView) findViewById(R.id.lvDonors);
+
+        App.Intialize(this);
+        App.c = this;
 
         //SETUP THE TOOLBAR
         setupToolbar();
+
+        LoadDonorData();
     }
 
     private void setupToolbar()
@@ -118,16 +126,15 @@ public class BloodDonorListingPage extends AppCompatActivity
         newsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                List<BloodDonor> donors = new ArrayList<BloodDonor>();
+                List<IListModel12> donors = new ArrayList<IListModel12>();
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     BloodDonor n = data.getValue(BloodDonor.class);
                     donors.add(n);
                 }
 
-               /* ListAdapter listAdp = new BloodDonorListAdapter(BloodDonorListingPage, donors, R.layout.news_page_single_view);
+                ListAdapter listAdp = new ListModelAdapter(BloodDonorListingPage.this, donors, R.layout.blood_donor_page_single_view);
                 listNewsView.setAdapter(listAdp);
-                progress.dismiss();*/
-
+                //progress.dismiss();
             }
 
             @Override

@@ -41,9 +41,14 @@ public class ListModelAdapter extends ArrayAdapter<IListModel12>
         IListModel12 listModel = getItem(position);
 
         TextView tvTitle = (TextView) view.findViewById(R.id.lblTitle);
+        TextView tvDescription = (TextView) view.findViewById(R.id.lblDescription);
+        TextView tvDetail = (TextView) view.findViewById(R.id.lblDetail);
         ImageView ivPic = (ImageView) view.findViewById(R.id.imgPic);
 
+
         tvTitle.setText(listModel.getTitle());
+        tvDescription.setText(listModel.getDescription());
+        tvDetail.setText(listModel.getDetail());
         App.LoadImage(view.getContext(), ivPic, listModel.getImageURL());
 
 

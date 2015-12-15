@@ -7,8 +7,7 @@ package com.newplanet.inforotaract.Models;
 public interface IListModel12 {
 
      public String getTitle();
-     public int x =10;
-
-     String getImageURL();
-     //public String getDescription();
+     public String getImageURL();
+     public String getDescription();
+     public String getDetail();
 }
