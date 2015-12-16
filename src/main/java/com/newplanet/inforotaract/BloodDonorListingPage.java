@@ -29,6 +29,8 @@ import com.newplanet.inforotaract.Utils.App;
 import com.newplanet.inforotaract.Utils.GetJson;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -42,6 +44,7 @@ public class BloodDonorListingPage extends AppCompatActivity
     ProgressDialog progress;
     ListView listNewsView;
     View view;
+    List<IListModel12> donors = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -49,6 +52,7 @@ public class BloodDonorListingPage extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.blood_donar_page);
         listNewsView = (ListView) findViewById(R.id.lvDonors);
+        listNewsView.setTextFilterEnabled(true);
 
         App.Intialize(this);
         App.c = this;
@@ -57,6 +61,8 @@ public class BloodDonorListingPage extends AppCompatActivity
         setupToolbar();
 
         LoadDonorData();
+
+
     }
 
     private void setupToolbar()
@@ -101,10 +107,22 @@ public class BloodDonorListingPage extends AppCompatActivity
             {
                 mSearchString = newText;
                 if (TextUtils.isEmpty(mSearchString)) {
-                    //listCityView.clearTextFilter();
+                    listNewsView.clearTextFilter();
                 } else {
-                    //listCityView.setFilterText(mSearchString.toString());
+                    listNewsView.setFilterText(mSearchString.toString());
+
+                    List<IListModel12> donorList = new ArrayList<IListModel12>();
+                    String filterString = mSearchString.toString().toLowerCase();
+                    for (IListModel12 data : donors)
+                    {
+                        if(data.getTitle().toLowerCase().contains(filterString)
+                                || data.getDetail().toLowerCase().contains(filterString)
+                                || data.getDescription ().toLowerCase().contains(filterString))
+                            donorList.add(data);
+                    }
+                    RenderPage(donorList);
                 }
+
                 return true;
             }
 
@@ -118,6 +136,12 @@ public class BloodDonorListingPage extends AppCompatActivity
         return super.onCreateOptionsMenu(menu);
     }
 
+    private void RenderPage(List<IListModel12> donors)
+    {
+        //POPULATE THE LIST VIEW
+        ListAdapter listAdp = new ListModelAdapter(BloodDonorListingPage.this, donors, R.layout.blood_donor_page_single_view);
+        listNewsView.setAdapter(listAdp);
+    }
 
     private void LoadDonorData()
     {
@@ -126,16 +150,16 @@ public class BloodDonorListingPage extends AppCompatActivity
         newsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                List<IListModel12> donors = new ArrayList<IListModel12>();
+                donors = new ArrayList<IListModel12>();
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     BloodDonor n = data.getValue(BloodDonor.class);
                     donors.add(n);
                 }
-
-                ListAdapter listAdp = new ListModelAdapter(BloodDonorListingPage.this, donors, R.layout.blood_donor_page_single_view);
-                listNewsView.setAdapter(listAdp);
+                RenderPage(donors);
                 //progress.dismiss();
             }
+
+
 
             @Override
             public void onCancelled(FirebaseError firebaseError) {
