@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/imgbackground">
+    <ImageView
+        android:src="@drawable/homeheader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/eventHeader"
+        android:layout_marginTop="-10dp" />
+    <ImageView
+        android:src="@drawable/logo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:id="@+id/eventHeader2"
+        android:layout_gravity="center_horizontal"
+        android:alpha="0.3" />
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton1"
+        android:soundEffectsEnabled="true"
+        android:focusable="true"
+        android:clickable="true"
+        android:layout_marginTop="100dp"
+        android:contentDescription="0"
+        android:background="@drawable/menu1"
+        android:layout_marginBottom="5dp" />
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton2"
+        android:background="@drawable/menu2"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp" />
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton3"
+        android:background="@drawable/menu3"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp" />
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton4"
+        android:background="@drawable/menu4"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp" />
+</LinearLayout>
