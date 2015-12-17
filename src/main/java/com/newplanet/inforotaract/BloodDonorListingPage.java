@@ -1,20 +1,32 @@
 package com.newplanet.inforotaract;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -28,6 +40,9 @@ import com.newplanet.inforotaract.Models.News;
 import com.newplanet.inforotaract.Utils.App;
 import com.newplanet.inforotaract.Utils.GetJson;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -39,6 +54,7 @@ import java.util.List;
  */
 public class BloodDonorListingPage extends AppCompatActivity
 {
+    final Context context = this;
     SearchView mSearchView;
     String mSearchString;
     ProgressDialog progress;
@@ -53,9 +69,23 @@ public class BloodDonorListingPage extends AppCompatActivity
         setContentView(R.layout.blood_donar_page);
         listNewsView = (ListView) findViewById(R.id.lvDonors);
         listNewsView.setTextFilterEnabled(true);
+        listNewsView.setOnItemClickListener(
+                new AdapterView.OnItemClickListener(){
+
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+                    {
+                        showPopUpWindow((BloodDonor)parent.getItemAtPosition(position));
+                    }
+                }
+        );
 
         App.Intialize(this);
         App.c = this;
+
+
+        progress = ProgressDialog.show(BloodDonorListingPage.this, "","Loading...", true);
+        progress.setProgressStyle(R.style.ProgressBar);
 
         //SETUP THE TOOLBAR
         setupToolbar();
@@ -63,6 +93,14 @@ public class BloodDonorListingPage extends AppCompatActivity
         LoadDonorData();
 
 
+    }
+
+    private void showPopUpWindow(BloodDonor contact)
+    {
+        FragmentManager fm = getSupportFragmentManager();
+        DialogWindow dialogWindow = new DialogWindow();
+        dialogWindow.contact = contact;
+        dialogWindow.show(fm, "fragment_edit_name");
     }
 
     private void setupToolbar()
@@ -115,7 +153,7 @@ public class BloodDonorListingPage extends AppCompatActivity
                     String filterString = mSearchString.toString().toLowerCase();
                     for (IListModel12 data : donors)
                     {
-                        if(data.getTitle().toLowerCase().contains(filterString)
+                        if(data.getTitle().toLowerCase().contains(filterString.trim())
                                 || data.getDetail().toLowerCase().contains(filterString)
                                 || data.getDescription ().toLowerCase().contains(filterString))
                             donorList.add(data);
@@ -143,8 +181,7 @@ public class BloodDonorListingPage extends AppCompatActivity
         listNewsView.setAdapter(listAdp);
     }
 
-    private void LoadDonorData()
-    {
+    private void LoadDonorData() {
         //LOAD BLOOD DONOR DATA
         Firebase newsRef = new Firebase(GetJson.donorRefNode);
         newsRef.addValueEventListener(new ValueEventListener() {
@@ -156,9 +193,8 @@ public class BloodDonorListingPage extends AppCompatActivity
                     donors.add(n);
                 }
                 RenderPage(donors);
-                //progress.dismiss();
+                progress.dismiss();
             }
-
 
 
             @Override
@@ -167,4 +203,5 @@ public class BloodDonorListingPage extends AppCompatActivity
             }
         });
     }
+
 }
