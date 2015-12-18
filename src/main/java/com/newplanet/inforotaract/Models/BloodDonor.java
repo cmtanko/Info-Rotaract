@@ -79,7 +79,7 @@ public class BloodDonor implements Serializable,IListModel12
 
     @Override
     public String getTitle() {
-        return getFirstname() + " " + getLastname() + " [" + getBloodgroup() + "] ";
+        return getFirstname() + " [" + getBloodgroup() + "] ";
     }
 
     @Override
@@ -93,6 +93,8 @@ public class BloodDonor implements Serializable,IListModel12
         String available="";
         if(getIs_availabe().equals("1"))
             available = "Yes";
+        else if(getIs_availabe().equals("0"))
+            available = "Unknown";
         else
             available = "No";
         return "Blood Group: " + getBloodgroup() + " | Availability:" + available;

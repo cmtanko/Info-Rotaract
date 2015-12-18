@@ -27,12 +27,12 @@ public class MainMenuPage extends ActionBarActivity implements View.OnClickListe
         Intent intent;
         if(v == findViewById(R.id.imageButton4))
         {
-            intent = new Intent(this,BloodDonorListingPage.class);
+            intent = new Intent(this,BloodGroupListing.class);
             startActivity(intent);
         }
         else if (v== findViewById(R.id.imageButton3))
         {
-            intent = new Intent(this,BloodDonorListingPage.class);
+            intent = new Intent(this,BloodGroupListing.class);
             startActivity(intent);
         }
     }

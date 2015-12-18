@@ -54,7 +54,7 @@ public class DialogWindow extends DialogFragment
         TextView contactCommentView =(TextView) view.findViewById(R.id.tvComment);
         ImageView contactImgView = (ImageView) view.findViewById(R.id.contactImg);
 
-        contactNameView.setText("Name: " + contact.getFirstname() + " " + contact.getLastname() + " [" + contact.getBloodgroup() + "]");
+        contactNameView.setText("Name: " + contact.getTitle());
         contactEmailView.setText("Email: " +contact.getEmail());
         contactPhoneView.setText("Contact: " +contact.getPhone());
         contactCommentView.setText(contact.getDescription());

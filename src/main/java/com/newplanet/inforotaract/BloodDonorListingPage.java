@@ -25,6 +25,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -183,7 +184,39 @@ public class BloodDonorListingPage extends AppCompatActivity
 
     private void LoadDonorData() {
         //LOAD BLOOD DONOR DATA
-        Firebase newsRef = new Firebase(GetJson.donorRefNode);
+        String bloodGroup = getIntent().getStringExtra("bloodGroup");
+        String linkExt = "";
+        switch(bloodGroup)
+        {
+            case "AB+":
+                linkExt ="pAB";
+                break;
+            case "AB-":
+                linkExt ="nAB";
+                break;
+            case "A+":
+                linkExt ="pA";
+                break;
+            case "A-":
+                linkExt ="nA";
+                break;
+            case "B+":
+                linkExt ="pB";
+                break;
+            case "B-":
+                linkExt ="nB";
+                break;
+            case "O+":
+                linkExt ="pO";
+                break;
+            case "O-":
+                linkExt ="nO";
+                break;
+            default:
+                linkExt ="pAB";
+                break;
+        }
+        Firebase newsRef = new Firebase(GetJson.donorRefNode + "/" + linkExt);
         newsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
