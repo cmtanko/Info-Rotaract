@@ -38,6 +38,8 @@
         <activity android:name=".EventListingActivity">
         </activity>
 
+        <activity android:name=".NewsListingActivity">
+        </activity>
     </application>
 
 </manifest>

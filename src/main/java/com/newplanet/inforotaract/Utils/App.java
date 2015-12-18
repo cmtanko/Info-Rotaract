@@ -7,6 +7,10 @@ import android.net.NetworkInfo;
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.firebase.client.Firebase;
+import com.newplanet.inforotaract.Models.IListModel12;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created on 12/14/2015
@@ -44,5 +48,14 @@ public class App
                 .load(imgUrl)
                 .centerCrop()
                 .into(iv);
+    }
+
+    public static List<IListModel12> sortByDesc(List<IListModel12> events)
+    {
+        List<IListModel12> sortedEvents = new ArrayList<IListModel12>();
+        for (int i = events.size() - 1; i >= 0; i--) {
+            sortedEvents.add(events.get(i));
+        }
+        return sortedEvents;
     }
 }

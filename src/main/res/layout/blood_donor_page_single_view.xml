@@ -43,7 +43,7 @@
             android:orientation="vertical"
             android:layout_weight="75">
             <TextView
-                android:id="@+id/lblTitle"
+                android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
@@ -53,14 +53,14 @@
                 android:textStyle="bold"
                 android:textSize="15sp" />
             <TextView
-                android:id="@+id/lblDetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
                 android:text="Rotaract Club of Kathmandu North East"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textSize="13sp"
-                android:textColor="#6c6c6c" />
+                android:textColor="#6c6c6c"
+                android:id="@+id/lblDetail" />
             <TextView
                 android:id="@+id/lblDescription"
                 android:layout_width="match_parent"

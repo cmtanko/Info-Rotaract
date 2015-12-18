@@ -17,7 +17,12 @@ import com.newplanet.inforotaract.Models.IListModel12;
 import com.newplanet.inforotaract.Utils.App;
 import com.newplanet.inforotaract.Utils.GetJson;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 public class EventListingActivity extends AppCompatActivity
@@ -39,11 +44,14 @@ public class EventListingActivity extends AppCompatActivity
         //SETUP THE TOOLBAR
         setupToolbar();
 
-        LoadData();
+        try {
+            LoadData();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
-    private void LoadData()
-    {
+    private void LoadData() throws ParseException {
         if(App.IsOnline())
         {
             LoadEventsData();
@@ -56,38 +64,50 @@ public class EventListingActivity extends AppCompatActivity
         return true;
     }
 
-    private void LoadEventsData()
-    {
+    private void LoadEventsData() throws ParseException {
+        final DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+        final String today = new SimpleDateFormat("MM/dd/yyyy").format(new Date());
+
         Firebase newsRef = new Firebase(GetJson.eventsRefNode);
-        newsRef.addValueEventListener(new ValueEventListener() {
+        newsRef.orderByChild("sno").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot)
-            {
+            public void onDataChange(DataSnapshot dataSnapshot) {
                 List<IListModel12> events = new ArrayList<IListModel12>();
-                for(DataSnapshot data:dataSnapshot.getChildren())
-                {
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
                     Event e = data.getValue(Event.class);
-                    events.add(e);
+
+                    String eventDateString = e.date;
+
+                    try {
+                        Date eventDate = df.parse(eventDateString);
+                        Date currentDate = df.parse(today);
+
+                        if (eventDate.compareTo(currentDate) > 0)
+                            events.add(e);
+                    } catch (ParseException e1) {
+                        e1.printStackTrace();
+                    }
                 }
 
-                ListAdapter listAdp = new ListModelAdapter(EventListingActivity.this, events, R.layout.event_page_single_view);
+                ListAdapter listAdp = new ListModelAdapter(EventListingActivity.this, App.sortByDesc(events), R.layout.event_page_single_view);
                 listEventsView.setAdapter(listAdp);
                 progress.dismiss();
 
             }
 
             @Override
-            public void onCancelled(FirebaseError firebaseError)
-            {
+            public void onCancelled(FirebaseError firebaseError) {
 
             }
         });
     }
 
+
+
     private void setupToolbar()
     {
         final Toolbar advToolbar = (Toolbar) findViewById(R.id.my_awesome_toolbar);
-        advToolbar.setTitle("Events");
+        advToolbar.setTitle("Upcoming Events");
         advToolbar.setTitleTextColor(getResources().getColor(R.color.colorPrimaryDark));
 
         setSupportActionBar(advToolbar);
