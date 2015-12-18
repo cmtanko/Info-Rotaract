@@ -33,7 +33,9 @@
         </activity>
 
         <activity android:name=".BloodGroupListing">
+        </activity>
 
+        <activity android:name=".EventListingActivity">
         </activity>
 
     </application>

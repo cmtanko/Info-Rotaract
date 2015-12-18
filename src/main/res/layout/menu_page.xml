@@ -21,7 +21,7 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageButton1"
+        android:id="@+id/btnAbout"
         android:soundEffectsEnabled="true"
         android:focusable="true"
         android:clickable="true"
@@ -32,21 +32,21 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageButton2"
+        android:id="@+id/btnEvent"
         android:background="@drawable/menu2"
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp" />
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageButton3"
+        android:id="@+id/btnNews"
         android:background="@drawable/menu3"
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp" />
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageButton4"
+        android:id="@+id/btnDonor"
         android:background="@drawable/menu4"
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp" />

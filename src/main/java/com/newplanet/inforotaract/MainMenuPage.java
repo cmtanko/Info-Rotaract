@@ -10,27 +10,44 @@ import android.widget.ImageButton;
 
 public class MainMenuPage extends ActionBarActivity implements View.OnClickListener
 {
-    ImageButton btnBloodDonor;
+    ImageButton btnAbout, btnEvent,btnNews,btnDonor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_page);
-        btnBloodDonor = (ImageButton) findViewById(R.id.imageButton4);
-        btnBloodDonor.setOnClickListener(this);
+        btnAbout = (ImageButton) findViewById(R.id.btnAbout);
+        btnEvent = (ImageButton) findViewById(R.id.btnEvent);
+        btnNews = (ImageButton) findViewById(R.id.btnNews);
+        btnDonor = (ImageButton) findViewById(R.id.btnDonor);
+
+        btnAbout.setOnClickListener(this);
+        btnEvent.setOnClickListener(this);
+        btnNews.setOnClickListener(this);
+        btnDonor.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v)
     {
         Intent intent;
-        if(v == findViewById(R.id.imageButton4))
+        if(v == findViewById(R.id.btnAbout))
         {
             intent = new Intent(this,BloodGroupListing.class);
             startActivity(intent);
         }
-        else if (v== findViewById(R.id.imageButton3))
+        else if (v== findViewById(R.id.btnEvent))
+        {
+            intent = new Intent(this,EventListingActivity.class);
+            startActivity(intent);
+        }
+        else if (v== findViewById(R.id.btnNews))
+        {
+            intent = new Intent(this,BloodGroupListing.class);
+            startActivity(intent);
+        }
+        else if (v== findViewById(R.id.btnDonor))
         {
             intent = new Intent(this,BloodGroupListing.class);
             startActivity(intent);
